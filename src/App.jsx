@@ -32,7 +32,7 @@ function generateMockMVRVSeries(anchorLength = 180) {
   let mvrv = 2.1;
   const len = typeof anchorLength === 'number' && anchorLength > 0 ? anchorLength : 180;
   const arr = Array.from({ length: len }, (_, i) => {
-    mvrv += (Math.random() - 0.5) * 0.06;
+    mvrv += (Math.random() - 0.5) * 0.3;
     const t = now - (len - 1 - i) * 24 * 60 * 60 * 1000;
     return { t, mvrv: Math.max(0.6, Math.min(5, mvrv)) };
   });
@@ -418,7 +418,16 @@ export default function App() {
                           tick={{ fill: '#475569' }}
                         />
 
-                        <YAxis yAxisId="right" orientation="right" domain={mvrvDomain} tickFormatter={(v) => Number(v).toFixed(1)} fontSize={12} stroke="#94a3b8" tick={{ fill: '#475569' }} />
+                        <YAxis
+                          yAxisId="right"
+                          orientation="right"
+                          domain={[0, 4]}
+                          tickFormatter={(v) => Number(v).toFixed(1)}
+                          fontSize={12}
+                          stroke="#94a3b8"
+                          tick={{ fill: '#475569' }}
+                        />
+                         
                       <Tooltip
   labelFormatter={(l) => new Date(l).toLocaleString()}
   formatter={(v, n) => (n === 'price' ? `$${Number(v).toFixed(2)}` : Number(v).toFixed(2))}
