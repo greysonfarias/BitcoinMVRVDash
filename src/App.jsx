@@ -476,9 +476,9 @@ export default function App() {
               {/* Error banner */}
               {(errors.price || errors.fng || errors.mvrv) ? (
                 <div style={{ marginTop: 16, background: '#fff7ed', color: '#9a3412', border: '1px solid #fed7aa', padding: 10, borderRadius: 12 }}>
-                  {errors.price ? Price: ${errors.price}.  : ''}
-                  {errors.fng ? F&G: ${errors.fng}.  : ''}
-                  {errors.mvrv ? MVRV: ${errors.mvrv}. : ''}
+                {errors.price ? `Price: ${errors.price}. ` : ''}
+{errors.fng ? `F&G: ${errors.fng}. ` : ''}
+{errors.mvrv ? `MVRV: ${errors.mvrv}.` : ''}
                 </div>
               ) : null}
             </>
