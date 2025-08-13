@@ -334,7 +334,8 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
-  const changeText = typeof change24h === "number" ? ${change24h.toFixed(2)}% : "—";
+  const changeText = typeof change24h === "number" ? `${change24h.toFixed(2)}%` : "—";
+
   const changeColor = typeof change24h === "number" ? (change24h >= 0 ? "#059669" : "#dc2626") : "#475569";
   const mvrvDomain = computeMvrvDomain(mvrv.series);
   const alerts = buildAlerts({ mvrv, fngValue });
