@@ -166,10 +166,12 @@ function buildAlerts(state) {
   const mv = state && state.mvrv && typeof state.mvrv.current === 'number' ? state.mvrv.current : null;
   const fg = state && typeof state.fngValue === 'number' ? state.fngValue : null;
   if (typeof mv === 'number') {
-    if (mv >= 3.0) out.push({ level: 'HIGH', title: 'MVRV Overbought', desc: MVRV at ${mv.toFixed(2)} (>= 3.0). });
-    else if (mv >= 2.5) out.push({ level: 'MEDIUM', title: 'MVRV Elevated', desc: MVRV at ${mv.toFixed(2)} (>= 2.5). });
+   if (mv >= 3.0) out.push({ level: 'HIGH', title: 'MVRV Overbought', desc: `MVRV at ${mv.toFixed(2)} (>= 3.0).` });
+else if (mv >= 2.5) out.push({ level: 'MEDIUM', title: 'MVRV Elevated', desc: `MVRV at ${mv.toFixed(2)} (>= 2.5).` });
+
   }
-  if (typeof fg === 'number' && fg >= 70) out.push({ level: 'MEDIUM', title: 'Extreme Greed', desc: Fear & Greed = ${fg}. });
+  if (typeof fg === 'number' && fg >= 70)
+  out.push({ level: 'MEDIUM', title: 'Extreme Greed', desc: `Fear & Greed = ${fg}.` });
   return out;
 }
 
