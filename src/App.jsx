@@ -253,7 +253,7 @@ function Sidebar({ active = 'dashboard', onSelect }) {
 /* --------------------------------
    Main component
 ---------------------------------*/
-export default function BitcoinDashboardPhase5Visual() {
+export default function App() {
   const initial = useMemo(() => generateMockPriceSeries(180), []);
   const [priceSeries, setPriceSeries] = useState(initial);
   const [price, setPrice] = useState(null);
