@@ -419,7 +419,11 @@ export default function App() {
                         />
 
                         <YAxis yAxisId="right" orientation="right" domain={mvrvDomain} tickFormatter={(v) => Number(v).toFixed(1)} fontSize={12} stroke="#94a3b8" tick={{ fill: '#475569' }} />
-                        <Tooltip labelFormatter={(l) => new Date(l).toLocaleString()} formatter={(v, n) => (n === 'price' ? $${Number(v).toFixed(2)} : Number(v).toFixed(2))} />
+                      <Tooltip
+  labelFormatter={(l) => new Date(l).toLocaleString()}
+  formatter={(v, n) => (n === 'price' ? `$${Number(v).toFixed(2)}` : Number(v).toFixed(2))}
+/>
+
                         <Legend />
                         <Line yAxisId="left" type="monotone" dataKey="price" name="Bitcoin Price" dot={false} strokeWidth={2} />
                         <Line yAxisId="right" type="monotone" dataKey="mvrv" name="MVRV" dot={false} strokeWidth={2} strokeDasharray="4 2" />
