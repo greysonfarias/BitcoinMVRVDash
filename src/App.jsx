@@ -139,7 +139,7 @@ function FNGBar({ value = 0 }) {
   const color = v < 30 ? '#dc2626' : (v <= 75 ? '#f59e0b' : '#dc2626');
   return (
     <div style={{ width: '100%', height: 12, background: '#e2e8f0', borderRadius: 999, overflow: 'hidden' }}>
-      <div style={{ width: ${v}%, height: '100%', background: color }} />
+     <div style={{ width: `${v}%`, height: '100%', background: color }} />
     </div>
   );
 }
