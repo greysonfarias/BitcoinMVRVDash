@@ -419,23 +419,41 @@ export default function App() {
                         />
 
                         <YAxis
-                          yAxisId="right"
-                          orientation="right"
-                          domain={[0, 4]}
-                          tickFormatter={(v) => Number(v).toFixed(1)}
-                          fontSize={12}
-                          stroke="#94a3b8"
-                          tick={{ fill: '#475569' }}
-                        />
+                             yAxisId="right"
+                             orientation="right"
+                             domain={[0, 4]} // faixa fixa
+                             tickFormatter={(v) => Number(v).toFixed(1)}
+                             fontSize={12}
+                             stroke="#94a3b8"
+                             tick={{ fill: '#475569' }}
+                           />
                          
-                      <Tooltip
-  labelFormatter={(l) => new Date(l).toLocaleString()}
-  formatter={(v, n) => (n === 'price' ? `$${Number(v).toFixed(2)}` : Number(v).toFixed(2))}
-/>
+                            <Tooltip
+                                labelFormatter={(l) => new Date(l).toLocaleString()}
+                                formatter={(v, n) => (n === 'price' ? `$${Number(v).toFixed(2)}` : Number(v).toFixed(2))}
+                              />
 
                         <Legend />
-                        <Line yAxisId="left" type="monotone" dataKey="price" name="Bitcoin Price" dot={false} strokeWidth={2} />
-                        <Line yAxisId="right" type="monotone" dataKey="mvrv" name="MVRV" dot={false} strokeWidth={2} strokeDasharray="4 2" />
+                        <Line
+                             yAxisId="left"
+                             type="monotone"
+                             dataKey="price"
+                             name="Bitcoin Price"
+                             dot={false}
+                             strokeWidth={2}
+                             stroke="#3b82f6" // azul
+                           />
+                           <Line
+                             yAxisId="right"
+                             type="monotone"
+                             dataKey="mvrv"
+                             name="MVRV"
+                             dot={false}
+                             strokeWidth={2}
+                             stroke="#f97316" // laranja
+                             strokeDasharray="4 2"
+                           />
+
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
@@ -521,7 +539,7 @@ function mergeSeries(priceArr, mvrvArr) {
     if (p && m) {
       const tp = Number(p.t);
       const tm = Number(m.t);
-      if (Math.abs(tp - tm) <= 12 * 60 * 60 * 1000) {
+      if (Math.abs(tp - tm) <= 24 * 60 * 60 * 1000) { // antes era 12h
         out.push({ t: tp, price: p.price, mvrv: m.mvrv });
         i++; j++;
       } else if (tp < tm) {
